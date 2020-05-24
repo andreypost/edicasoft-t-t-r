@@ -27,7 +27,6 @@ export default class App extends React.Component {
     fetch('http://localhost:3001/posts')
       .then(response => response.json())
       .then(json => {
-        console.log(json)
         this.handleChangeState(json, '', '')
       })
   }
@@ -116,6 +115,8 @@ export default class App extends React.Component {
     form.username.value = ''
     form.email.value = ''
     form.address.value = ''
+    this.handleChangeState([], '', '')
+    this.handleViewAll()
   }
 
   render() {
