@@ -1,38 +1,113 @@
-.App {
+
+.app label {
+  width: 100%;
+  text-align: left;
+}
+
+.app input::placeholder {
   text-align: center;
+  color: var(--lightblue);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* .app input:invalid {
+  border: 1px solid var(--red);
+} */
+input:-internal-autofill-selected {
+  -webkit-appearance: menulist-button;
+  background-color: rgb(232, 240, 254) !important;
+  background-image: none !important;
+  color: unset !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.app button, .app input {
+  min-width: 240px;
+  margin: 15px 10px 15px 0;
+  padding: 12px 32px;
+  text-align: center;
+  color: var(--green);
+  border: 1px solid var(--lightgrey);
+  border-radius: 32px;
+  background: var(--white);
+}
+.app button, .app table th {
+  font-weight: 600;
+}
+.app table {
+  width: 100%;
+  margin: 20px auto;
+  text-align: center;
+  border-collapse: collapse;
+  color: var(--green);
+}
+.app table th, .app table td {
+  border: 1px solid var(--lightgrey);
+  padding: 10px;
+}
+.app table td, .app table th {
+  width: 30%;
+}
+.app table th:nth-child(3), .app table td:nth-child(3)  {
+  width: 40%;
+}
+.app table th:nth-child(4), .app table td:nth-child(4),
+.app table th:nth-child(5), .app table td:nth-child(5) {
+  min-width: 80px;
+}
+.app table th:nth-child(4), .app table td:nth-child(4) {
+  color: var(--lightblue);
+}
+.app table th:nth-child(5), .app table td:nth-child(5),
+.app .app__cancel {
+  color: var(--red);
+}
+
+
+
+
+
+
+
+
+.app__list {
+
+}
+
+@media screen and (min-width: 1025px) {}
+
+@media screen and (max-width: 1024px) {
+  .none1024 {
+    display: none;
+  }
+  .block1024 {
+    display: block;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@media screen and (max-width: 768px) {
+  .none768 {
+    display: none;
+  }
+  .block768 {
+    display: block;
+  }
+  .flex768 {
+    display: flex;
+  }
+  .column768 {
+    flex-flow: column;
+  }
+  .margincenter768 {
+    margin: 0 auto;
+  }
+  .center768 {
+    text-align: center;
+  }
+  .px25_768 {
+    font-size: 25px;
+  }
+  .px10_768, .search__input::placeholder {
+    font-size: 10px;
+  }
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+@media screen and (max-width: 425px) {}
