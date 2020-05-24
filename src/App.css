@@ -9,9 +9,6 @@
   color: var(--lightblue);
 }
 
-/* .app input:invalid {
-  border: 1px solid var(--red);
-} */
 input:-internal-autofill-selected {
   -webkit-appearance: menulist-button;
   background-color: rgb(232, 240, 254) !important;
@@ -62,52 +59,3 @@ input:-internal-autofill-selected {
 }
 
 
-
-
-
-
-
-
-.app__list {
-
-}
-
-@media screen and (min-width: 1025px) {}
-
-@media screen and (max-width: 1024px) {
-  .none1024 {
-    display: none;
-  }
-  .block1024 {
-    display: block;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .none768 {
-    display: none;
-  }
-  .block768 {
-    display: block;
-  }
-  .flex768 {
-    display: flex;
-  }
-  .column768 {
-    flex-flow: column;
-  }
-  .margincenter768 {
-    margin: 0 auto;
-  }
-  .center768 {
-    text-align: center;
-  }
-  .px25_768 {
-    font-size: 25px;
-  }
-  .px10_768, .search__input::placeholder {
-    font-size: 10px;
-  }
-}
-
-@media screen and (max-width: 425px) {}
