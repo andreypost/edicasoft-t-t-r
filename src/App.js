@@ -9,8 +9,8 @@ export default class App extends React.Component {
     this.handleViewAll = this.handleViewAll.bind(this)
     this.handleSearchForm = this.handleSearchForm.bind(this)
     this.handleSubmitRegister = this.handleSubmitRegister.bind(this)
-    this.handleShowEditForm = this.handleShowEditForm.bind(this)
-    this.handleEditUserForm = this.handleEditUserForm.bind(this)
+    this.handleEditUser = this.handleEditUser.bind(this)
+    this.handleSubmitChangeUserForm = this.handleSubmitChangeUserForm.bind(this)
     this.handleDeleteUser = this.handleDeleteUser.bind(this)
     this.handleCancelEdit = this.handleCancelEdit.bind(this)
   }
@@ -32,7 +32,6 @@ export default class App extends React.Component {
   }
 
   handleSearchForm(e) {
-    e.preventDefault()
     fetch('http://localhost:3001/posts')
       .then(response => response.json())
       .then(json => {
@@ -42,6 +41,7 @@ export default class App extends React.Component {
         }
         this.handleChangeState(arr, '', '')
       })
+    e.preventDefault()
   }
 
   handleSubmitRegister(e) {
@@ -62,12 +62,12 @@ export default class App extends React.Component {
     })
       .then(response => response.json())
       .then(json => console.log(json))
+      .then(() => this.handleViewAll())
     e.target.username.value = e.target.email.value = e.target.address.value = ''
     e.preventDefault()
-    setTimeout(this.handleViewAll, 500)
   }
 
-  handleShowEditForm(user) {
+  handleEditUser(user) {
     let form = document.getElementById('editUserForm')
     form.username.value = user.username
     form.email.value = user.email
@@ -75,7 +75,7 @@ export default class App extends React.Component {
     this.handleChangeState([], '', user.id)
   }
 
-  handleEditUserForm(e) {
+  handleSubmitChangeUserForm(e) {
     if (!this.state.userId) {
       e.preventDefault()
       return
@@ -97,9 +97,9 @@ export default class App extends React.Component {
     })
       .then(response => response.json())
       .then(json => console.log(json))
+      .then(() => this.handleViewAll())
     e.target.username.value = e.target.email.value = e.target.address.value = ''
     e.preventDefault()
-    setTimeout(this.handleViewAll, 500)
   }
 
 
@@ -107,16 +107,15 @@ export default class App extends React.Component {
     fetch(`http://localhost:3001/posts/${user}`, {
       method: 'DELETE'
     })
-    setTimeout(this.handleViewAll, 500)
+    .then(() => this.handleViewAll())
   }
 
-  handleCancelEdit(e) {
+  handleCancelEdit() {
     let form = document.getElementById('editUserForm')
     form.username.value = ''
     form.email.value = ''
     form.address.value = ''
     this.handleChangeState([], '', '')
-    this.handleViewAll()
   }
 
   render() {
@@ -124,13 +123,13 @@ export default class App extends React.Component {
     return (
       <section className="app">
         <div className="colalignstart">
-          <button onClick={(e) => this.handleViewAll(e)}>VIEW ALL USERS</button>
+          <button onClick={() => this.handleViewAll()}>VIEW ALL USERS</button>
           <form id="searchByUserName" onSubmit={this.handleSearchForm} className="flexjustbet wrap">
             <button form="searchByUserName">SEARCH USER BY NAME</button>
             <input type="search"
               name="search" onChange={(e) => this.handleChangeState([], e.target.value)} required="username" value={this.state.searchName} autoComplete="off" placeholder="enter username" />
           </form>
-          <form id="registerUser" onSubmit={this.handleSubmitRegister} className="flexjustcenter wrap">
+          <form id="registerUser" onSubmit={(e) => this.handleSubmitRegister(e)} className="flexjustcenter wrap">
             <button form="registerUser">REGISTER</button>
             <input type="text"
               name="username" required="username" placeholder="username" autoComplete="off" />
@@ -139,7 +138,7 @@ export default class App extends React.Component {
             <input type="text"
               name="address" placeholder="address" autoComplete="off" />
           </form>
-          <form id="editUserForm" onSubmit={this.handleEditUserForm} className="flexjustcenter wrap">
+          <form id="editUserForm" onSubmit={(e) => this.handleSubmitChangeUserForm(e)} className="flexjustcenter wrap">
             <button form="editUserForm">EDIT</button>
             <input type="text"
               name="username" autoComplete="off" />
@@ -147,7 +146,7 @@ export default class App extends React.Component {
               name="email" autoComplete="off" />
             <input type="text"
               name="address" autoComplete="off" />
-            <button id="cancel" onClick={(e) => this.handleCancelEdit(e)} className="app__cancel">CANCEL</button>
+            <button id="cancel" onClick={() => this.handleCancelEdit()} className="app__cancel">CANCEL</button>
           </form>
         </div>
         <table>
@@ -162,7 +161,7 @@ export default class App extends React.Component {
           </thead>
           <tbody>
             {this.state.users.map((user, index) => (
-              <tr key={index}><td>{user.username}</td><td>{user.email}</td><td>{user.address.city} {user.address.street} {user.address.suite}</td><td onClick={() => this.handleShowEditForm(user)}>edit</td><td onClick={() => this.handleDeleteUser(user.id)}>delete</td></tr>
+              <tr key={index}><td>{user.username}</td><td>{user.email}</td><td>{user.address.city} {user.address.street} {user.address.suite}</td><td onClick={() => this.handleEditUser(user)}>edit</td><td onClick={() => this.handleDeleteUser(user.id)}>delete</td></tr>
             ))}
           </tbody>
         </table>
