@@ -39,7 +39,6 @@ export default class App extends React.Component {
       .then(json => {
         let arr = []
         for (let key of json) {
-          // console.log(key.username.toLowerCase(), this.state.name)
           if (key.username.toLowerCase() === this.state.searchName.toLowerCase()) arr.push(key)
         }
         this.handleChangeState(arr, '', '')
@@ -117,7 +116,6 @@ export default class App extends React.Component {
     form.username.value = ''
     form.email.value = ''
     form.address.value = ''
-    // this.handleChangeState([], '', '')
   }
 
   render() {
