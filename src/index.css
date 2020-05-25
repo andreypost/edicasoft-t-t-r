@@ -1,5 +1,5 @@
 :root { --white:#FFFFFF; --black:#000000; --dark:#343434; --red:#ff0000; --green:#0ece00; --lightgreen: #ddffdd; --grey:#707070; --lightgrey: #e8e8e8;; --lightblue: #8292F9;  }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; height:100%; height: 3000px; /* remove */ }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; height:100%; }
 .width, body, img { width: 100%; }
 h1, h2, h4, h3, h4, h5, h6, p { color: var(--dark); }
 .bold { font-weight:700; }

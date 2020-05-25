@@ -123,7 +123,7 @@ export default class App extends React.Component {
     return (
       <section className="app">
         <div className="colalignstart">
-          <button onClick={() => this.handleViewAll()}>VIEW ALL USERS</button>
+          <button className="app__view" onClick={() => this.handleViewAll()}>VIEW ALL USERS</button>
           <form id="searchByUserName" onSubmit={this.handleSearchForm} className="flexjustbet wrap">
             <button form="searchByUserName">SEARCH USER BY NAME</button>
             <input type="search"
