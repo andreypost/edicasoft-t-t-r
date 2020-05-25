@@ -38,7 +38,7 @@ export default class App extends React.Component {
     e.preventDefault()
   }
 
-  searchInput(value) {
+  searchInput() {
     const oninputSearch = () => {
       fetch('http://localhost:3001/posts')
         .then(response => response.json())
@@ -138,7 +138,7 @@ export default class App extends React.Component {
           <form id="searchByUserName" onSubmit={this.handleSearchForm} className="flexjustbet wrap">
             <button form="searchByUserName">SEARCH USER BY NAME</button>
             <input type="search"
-              name="search" onInput={(e) => this.searchInput(e.target.value)} onChange={(e) => this.handleChangeState([], e.target.value)} required="username" value={this.state.searchName} autoComplete="off" placeholder="enter username" />
+              name="search" onInput={() => this.searchInput()} onChange={(e) => this.handleChangeState([], e.target.value)} required="username" value={this.state.searchName} autoComplete="off" placeholder="enter username" />
           </form>
           <form id="registerUser" onSubmit={(e) => this.handleSubmitRegister(e)} className="flexjustcenter wrap">
             <button form="registerUser">REGISTER</button>
