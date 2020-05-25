@@ -8,6 +8,7 @@ export default class App extends React.Component {
     this.handleChangeState = this.handleChangeState.bind(this)
     this.handleViewAll = this.handleViewAll.bind(this)
     this.handleSearchForm = this.handleSearchForm.bind(this)
+    this.searchInput = this.searchInput.bind(this)
     this.handleSubmitRegister = this.handleSubmitRegister.bind(this)
     this.handleEditUser = this.handleEditUser.bind(this)
     this.handleSubmitChangeUserForm = this.handleSubmitChangeUserForm.bind(this)
@@ -32,16 +33,25 @@ export default class App extends React.Component {
   }
 
   handleSearchForm(e) {
-    fetch('http://localhost:3001/posts')
-      .then(response => response.json())
-      .then(json => {
-        let arr = []
-        for (let key of json) {
-          if (key.username.toLowerCase() === this.state.searchName.toLowerCase()) arr.push(key)
-        }
-        this.handleChangeState(arr, '', '')
-      })
+    this.setState({ searchName: '', })
+    clearInterval(this.timerId)
     e.preventDefault()
+  }
+
+  searchInput(value) {
+    const oninputSearch = () => {
+      fetch('http://localhost:3001/posts')
+        .then(response => response.json())
+        .then(json => {
+          let arr = []
+          for (let key of json) {
+            if (key.username.toLowerCase() === this.state.searchName.toLowerCase()) arr.push(key)
+          }
+          this.handleChangeState(arr, this.state.searchName, '')
+        })
+    }
+    oninputSearch()
+    this.timerId = setTimeout(() => oninputSearch(), 250)
   }
 
   handleSubmitRegister(e) {
@@ -107,7 +117,7 @@ export default class App extends React.Component {
     fetch(`http://localhost:3001/posts/${user}`, {
       method: 'DELETE'
     })
-    .then(() => this.handleViewAll())
+      .then(() => this.handleViewAll())
   }
 
   handleCancelEdit() {
@@ -118,6 +128,7 @@ export default class App extends React.Component {
     this.handleChangeState([], '', '')
   }
 
+
   render() {
 
     return (
@@ -127,7 +138,7 @@ export default class App extends React.Component {
           <form id="searchByUserName" onSubmit={this.handleSearchForm} className="flexjustbet wrap">
             <button form="searchByUserName">SEARCH USER BY NAME</button>
             <input type="search"
-              name="search" onChange={(e) => this.handleChangeState([], e.target.value)} required="username" value={this.state.searchName} autoComplete="off" placeholder="enter username" />
+              name="search" onInput={(e) => this.searchInput(e.target.value)} onChange={(e) => this.handleChangeState([], e.target.value)} required="username" value={this.state.searchName} autoComplete="off" placeholder="enter username" />
           </form>
           <form id="registerUser" onSubmit={(e) => this.handleSubmitRegister(e)} className="flexjustcenter wrap">
             <button form="registerUser">REGISTER</button>

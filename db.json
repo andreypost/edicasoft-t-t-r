@@ -1,27 +1,14 @@
 {
   "posts": [
     {
-      "id": 1,
-      "name": "Leanne Graham",
-      "username": "Bret",
+      "username": "Bret555",
       "email": "Sincere@april.biz",
       "address": {
-        "street": "Kulas Light",
-        "suite": "Apt. 556",
-        "city": "Gwenborough",
-        "zipcode": "92998-3874",
-        "geo": {
-          "lat": "-37.3159",
-          "lng": "81.1496"
-        }
+        "city": "Gwenborough Kulas Light Apt. 556",
+        "street": " ",
+        "suite": " "
       },
-      "phone": "1-770-736-8031 x56442",
-      "website": "hildegard.org",
-      "company": {
-        "name": "Romaguera-Crona",
-        "catchPhrase": "Multi-layered client-server neural-net",
-        "bs": "harness real-time e-markets"
-      }
+      "id": 1
     },
     {
       "id": 2,
@@ -229,6 +216,26 @@
         "catchPhrase": "Centralized empowering task-force",
         "bs": "target end-to-end models"
       }
+    },
+    {
+      "username": "andreypost",
+      "email": "andrey@com",
+      "address": {
+        "city": "ukraine 84    ",
+        "street": " ",
+        "suite": " "
+      },
+      "id": 11
+    },
+    {
+      "username": "andrey",
+      "email": "andrey@ukr",
+      "address": {
+        "city": "bucha",
+        "street": " ",
+        "suite": " "
+      },
+      "id": 12
     }
   ]
 }
