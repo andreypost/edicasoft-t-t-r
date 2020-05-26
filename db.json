@@ -1,10 +1,10 @@
 {
   "posts": [
     {
-      "username": "Bret555",
+      "username": "Bret",
       "email": "Sincere@april.biz",
       "address": {
-        "city": "Gwenborough Kulas Light Apt. 556",
+        "city": "Gwenborough Kulas Light Apt. 556                                                                                                ",
         "street": " ",
         "suite": " "
       },
@@ -218,24 +218,14 @@
       }
     },
     {
-      "username": "andreypost",
+      "username": "andrey",
       "email": "andrey@com",
       "address": {
-        "city": "ukraine 84    ",
+        "city": "ukraine 23 17 84",
         "street": " ",
         "suite": " "
       },
       "id": 11
-    },
-    {
-      "username": "andrey",
-      "email": "andrey@ukr",
-      "address": {
-        "city": "bucha",
-        "street": " ",
-        "suite": " "
-      },
-      "id": 12
     }
   ]
 }

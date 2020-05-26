@@ -59,7 +59,7 @@ input:-internal-autofill-selected {
   color: var(--lightblue);
 }
 
-.app table th:nth-child(5), .app table td:nth-child(5), .app .app__cancel {
+.app table th:nth-child(5), .app table td:nth-child(5), .app__cancel {
   color: var(--red);
 }
 
